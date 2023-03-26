@@ -177,9 +177,13 @@ const getTestcases = () => [
                 "path": ["navbar", "downloadsManager", "click"],
                 "values": ""
             },
+            {
+                "path": ["navbar", "downloadsManager", "download", "click"],
+                "values": ""
+            },
         ],
         "test": {
-            "path": ["navbar", "downloadsManager", "date", "getText"],
+            "path": ["navbar", "downloadsManager", "download", "readCSVFile"],
             "values": "assestmentScore"
         },
         "assertion": "contains",

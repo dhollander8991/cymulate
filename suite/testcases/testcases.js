@@ -107,11 +107,15 @@ const getTestcases = () => [
                 "values": "assestmentScore"
             },
             {
-                "path": ["scroll"],
-                "values": 200
+                "path": ["scrollDownSideBar"],
+                "values": ""
             },
             {
                 "path": ["generateReport", "click"],
+                "values": ""
+            },
+            {
+                "path": ["scrollDownCSV"],
                 "values": ""
             },
             {

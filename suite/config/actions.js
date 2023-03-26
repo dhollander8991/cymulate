@@ -9,9 +9,13 @@ const login = async () => {
         .click(components.login.buttons.signIn.selector);
 }
 
-const scroll = async (number = 200) => {
+const scrollDownSideBar = async (number = 200) => {
     //didnt have time to config this one
     await t.scroll(`div.report-sidebar`, `bottomRight`);
+}
+const scrollDownCSV = async (number = 200) => {
+    //didnt have time to config this one
+    await t.scroll(`div.report-sidebar`, `div.summary-data button.report-pop-up + div.generate-report-dropdown-popup > div + div button.cymulate-btn`);
 }
 const getTime = async () => {
     const res = new Date().getHours().toString() + ":" + new Date().getMinutes();
@@ -103,7 +107,8 @@ module.exports = {
     navbar,
     pages,
     assestmentSummary,
-    scroll,
+    scrollDownSideBar,
+    scrollDownCSV,
     getTime,
     generateReport
 }

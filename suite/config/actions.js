@@ -1,6 +1,8 @@
 import { t, Selector, ClientFunction } from 'testcafe';
 const components = require("./components.js");
 const userandpass = require("../../global/userandpass.json");
+const fs = require("fs");
+const os = require('os');
 
 const login = async () => {
     await t
@@ -15,7 +17,7 @@ const scrollDownSideBar = async (number = 200) => {
 }
 const scrollDownCSV = async (number = 200) => {
     //didnt have time to config this one
-    await t.scroll(`div.report-sidebar`, `div.summary-data button.report-pop-up + div.generate-report-dropdown-popup > div + div button.cymulate-btn`);
+    await t.scroll(`div.report-sidebar div.summary-data button.report-pop-up + div.generate-report-dropdown-popup > div + div button.cymulate-btn`, `bottomRight`);
 }
 const getTime = async () => {
     const res = new Date().getHours().toString() + ":" + new Date().getMinutes();
@@ -41,7 +43,9 @@ const navbar = {
         },
         date: {
             getText: async () => {
-                const res = await Selector(components.navbar.downloadsManager.date.selector).innerText;
+                let hour = await Selector(components.navbar.downloadsManager.date.hour.selector).innerText;
+                let date = await Selector(components.navbar.downloadsManager.date.date.selector).innerText;
+                let res = date + " " + hour;
                 return res;
             },
             compareTime: async () => {
@@ -50,6 +54,19 @@ const navbar = {
                 console.log(`downloaded time is ${time}`);
                 console.log(`Time is now ${date}`);
                 return time == now;
+            }
+        },
+        download: {
+            click: async () => {
+                await t.click(components.navbar.downloadsManager.download.selector)
+            },
+            readCSVFile: async () => {
+                try {
+                    const file = fs.readFileSync(`${os.homedir()}\\Downloads\\web_application_firewall_csv_report_2023_01_03_09_33.csv`, { encoding: "utf8" });
+                    return file;
+                } catch (e) {
+                    console.log(`Something is wrong in reading csv file ${e}`);
+                }
             }
         }
     }

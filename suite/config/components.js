@@ -25,6 +25,9 @@ const navbar = {
             },
             date: {
                 selector: `div.download-container > div:nth-child(1) div[class*=Download__TimeSinceLaunch] > div > span:nth-child(1)`
+            },
+            download: {
+                selector: `div.download-container > div:nth-child(1) div[class*=Download__TimeSinceLaunch] > button[test-id="download"]`
             }
         }
     }

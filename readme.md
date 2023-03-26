@@ -7,7 +7,7 @@
 ```
 https://github.com/dhollander8991/cymulate.git
 ```
-And after that run npm install
+And after that run npm install.
 There is a chance you will need to install testcafe globaly
 
 ### Runing the program
